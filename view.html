@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>String Page</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        h1, h2 {
+            font-family: 'Amatica SC', cursive;
+            font-weight: 700;
+            text-align: center;
+        }
+        p {
+            font-family: 'Open Sans Condensed', sans-serif;
+        }
+        .header {
+            background-color: skyblue;
+            height: 100px;
+            text-align: center;
+            color: #4f889f;
+            padding: 1px;
+        }
+        .container div {
+            padding: 1%;
+            box-sizing: border-box;
+            min-height: 500px;
+        }
+        .left-col, .right-col {
+            background-color: #f4f4f4;
+            width: 25%;
+            float: left;
+        }
+        .center-col {
+/*          background-color: pink; */
+            width: 50%;
+            float: left;
+        }
+        .footer {
+            clear: both;
+            font-family: 'Amatica SC', cursive;
+            background-color: skyblue;
+            text-align: center;
+            height: 50px;
+            padding-top: 10px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>STRING LIST</h1>
+</div>
+<div class="container">
+    <div class="left-col">
+        <h2>Alphabets</h2>
+        <table >
+                        <thead>
+                                <tr>
+                                    <th>Slno.</th>
+                                    <th>Alphabets</th>
+                                            </tr>
+                        </thead>
+                        <tbody>
+
+                                {% for i in key %}
+
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{i.alphabets}}</td>
+                                   <td><form method ='post'>{% csrf_token %}
+            <button type="submit">Delete</button>
+            <input name="delete" value="{{i.id}}" hidden>
+        </form>
+        </td>
+            </tr>
+    {% endfor %}
+                        </tbody>
+
+                    </table>
+    </div>
+    <div class="center-col">
+        <h2>Alphanumeric</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Slno.</th>
+                    <th>Alphabets</th>
+                </tr>
+            </thead>
+                <tbody>
+                    {% for i in key2 %}
+                    <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{i.alphanumeric}}</td>
+                                   <td><form method ='post'>{% csrf_token %}
+            <button type="submit">Delete</button>
+            <input name="delete1" value="{{i.id}}" hidden>
+        </form>
+        </td>
+                    </tr>
+    {% endfor %}
+                </tbody>>
+        </table>
+
+    </div>
+    <div class="right-col">
+        <h2>Numeric List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Slno.</th>
+                    <th>Numeric</th>
+                </tr>
+            </thead>
+                <tbody>
+                    {% for i in key3 %}
+                    <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{i.numeric}}</td>
+                                   <td><form method ='post'>{% csrf_token %}
+            <button type="submit">Delete</button>
+            <input name="delete2" value="{{i.id}}" hidden>
+        </form>
+        </td>
+                    </tr>
+    {% endfor %}
+                </tbody>>
+        </table>
+
+    </div>
+
+</div>
+
+<div class="footer"><a href="/check/">Back To Previos Page</a></div>
+
+</div>
+</body>
+</html>
